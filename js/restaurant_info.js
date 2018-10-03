@@ -19,6 +19,7 @@ initMap = () => {
       self.newMap = L.map('map', {
         center: [restaurant.latlng.lat, restaurant.latlng.lng],
         zoom: 16,
+        zoomControl: false,
         scrollWheelZoom: false
       });
       L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.jpg70?access_token={mapboxToken}', {
@@ -148,15 +149,9 @@ fillReviewsHTML = (reviews = self.restaurant.reviews) => {
  */
 createReviewHTML = (review) => {
   const li = document.createElement('li');
-  const name = document.createElement('p');
-  name.innerHTML = review.name;
-  li.appendChild(name);
+  li.className="rating";
 
-  const date = document.createElement('p');
-  date.innerHTML = review.date;
-  li.appendChild(date);
-
-  const rating = document.createElement('p');
+  const rating = document.createElement('span');
   rating.className="ratingStars";
   let stars = "";
   for(let i = 0; i < 5; i++) {
@@ -171,8 +166,19 @@ createReviewHTML = (review) => {
   rating.innerHTML = stars;
   li.appendChild(rating);
 
+  const name = document.createElement('p');
+  name.className="ratingName";
+  name.innerHTML = review.name;
+  li.appendChild(name);
+
+  const date = document.createElement('p');
+  date.className="ratingDate";
+  date.innerHTML = review.date;
+  li.appendChild(date);
+
   const comments = document.createElement('p');
   comments.innerHTML = review.comments;
+  comments.className = "ratingComments";
   li.appendChild(comments);
 
   return li;

@@ -151,14 +151,15 @@ article, aside, canvas, details, figcaption, figure, footer, header, hgroup, men
   width: 100%;
   min-height: 50px;
   background-color: #eee;
-  align-items: center;
+  align-items: baseline;
 }
 .filter-options h2 {
-  color: white;
-  font-size: 1rem;
-  font-weight: normal;
+  color: black;
+  font-size: 14px;
+  font-weight: bold;
   line-height: 1;
   margin: 0 20px;
+  padding:10px 0;
 }
 .filter-options select {
   background-color: white;

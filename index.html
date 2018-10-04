@@ -20,8 +20,11 @@
   </header>
 
   <main id="maincontent" class="flexboxContainer">
+    <section id="map-container">
+      <div id="map"></div>
+    </section>
     <section class="filter-wrapper">
-      <div class="filter-options,flexboxContainer">
+      <div class="filter-options flexboxContainer">
         <h2>Filter Results</h2>
         <select id="neighborhoods-select" name="neighborhoods" onchange="updateRestaurants()">
           <option value="all">All Neighborhoods</option>
@@ -30,9 +33,6 @@
           <option value="all">All Cuisines</option>
         </select>
       </div>
-    </section>
-    <section id="map-container">
-      <div id="map"></div>
     </section>
     <section>
       <ul id="restaurants-list" class="flexboxContainer"></ul>

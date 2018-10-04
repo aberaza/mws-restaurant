@@ -46,6 +46,9 @@ article, aside, canvas, details, figcaption, figure, footer, header, hgroup, men
   width: 100%;
   display: flex;
   flex-wrap: wrap;
+
+    justify-content: space-around;
+    align-items: baseline;
 }
 
 #footer {
@@ -131,10 +134,23 @@ article, aside, canvas, details, figcaption, figure, footer, header, hgroup, men
   background-color: #ccc;
 }
 /* ====================== Restaurant Filtering ====================== */
+
+/* #breadcrumb { */
+/*     padding: 5px 18px 7px; */
+/*     list-style: none; */
+/*     font-size: 14px; */
+/*     margin: 0; */
+/*     /1* width: 100%; *1/ */
+/*     width: calc(100vw - 36px); */
+/* } */
+.filter-wrapper {
+  width: 100%;
+  min-height: 50px;
+}
 .filter-options {
   width: 100%;
-  height: 50px;
-  background-color: #3397DB;
+  min-height: 50px;
+  background-color: #eee;
   align-items: center;
 }
 .filter-options h2 {
@@ -148,21 +164,42 @@ article, aside, canvas, details, figcaption, figure, footer, header, hgroup, men
   background-color: white;
   border: 1px solid #fff;
   font-family: Arial,sans-serif;
-  font-size: 11pt;
+  font-size: 13pt;
   height: 35px;
   letter-spacing: 0;
   margin: 10px;
   padding: 0 10px;
   width: 200px;
 }
-
+#neighborhoods-select:before {
+content: '🌍';
+    position: absolute;
+    right: 5px;
+    top: 5px;
+    font-size: 12px;
+    line-height: 1;
+    color:#aaa;
+}
+.select:before{
+  content:"*";
+  position:absolute;
+  paddign:2px 2px 2px 2px;
+}
+select{
+  border: 1px solid #ccc;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  flex-grow:1;
+}
 /* ====================== Restaurant Listing ====================== */
 #restaurants-list {
   background-color: #f3f3f3;
   list-style: outside none none;
   margin: 0;
-  padding: 30px 15px 60px;
+  /* padding: 30px 15px 60px; */
   text-align: center;
+  width: 100%;
 }
 #restaurants-list li {
   background-color: #fff;
@@ -172,7 +209,9 @@ article, aside, canvas, details, figcaption, figure, footer, header, hgroup, men
   min-height: 380px;
   padding: 0 30px 25px;
   text-align: left;
-  width: 270px;
+  max-width: 270px;
+  flex-grow: 1;
+  /* max-width: 340px; */
 }
 #restaurants-list .restaurant-img {
   background-color: #ccc;
@@ -201,12 +240,14 @@ article, aside, canvas, details, figcaption, figure, footer, header, hgroup, men
   border-bottom: 3px solid #eee;
   color: #fff;
   display: inline-block;
-  font-size: 10pt;
+  font-size: 13px;
+  font-weight: bold;
   margin: 15px 0 0;
-  padding: 8px 30px 10px;
+  padding: 8px 0 10px;
   text-align: center;
   text-decoration: none;
   text-transform: uppercase;
+  width: 100%;
 }
 
 /* ====================== Restaurant Details ====================== */
@@ -311,7 +352,7 @@ article, aside, canvas, details, figcaption, figure, footer, header, hgroup, men
   overflow: hidden;
   padding: 0 20px 20px;
   position: relative;
-  width: 90%;
+  width: 100%;
 }
 #restaurant-hours {
 }

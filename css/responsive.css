@@ -1,0 +1,54 @@
+
+@media screen and ( min-width:350px ){
+/* Put restaurant picture and opening times side to side */
+}
+
+@media screen and (min-width : 450px) {
+  #restaurant-container {
+    max-width: 49%;
+  }
+  #maincontent {
+    align-items: stretch;
+  }
+  .inside #map-container {
+    width: 49%;
+    height: calc(100vh - 88px);
+  }
+}
+
+@media screen and (min-width : 500px){
+  .header-nav h1 {
+    letter-spacing: 10px;
+    font-size: 24px;
+    padding-top: 13px;
+  }
+  #breadcrumb {
+    padding: 4px 18px 6px;
+    font-size: 16px;
+  }
+
+/* Add a slash symbol (/) before/behind each list item */
+#breadcrumb li+li:before {
+    padding: 8px;
+    color: black;
+    content: "\276d";
+}
+
+}
+
+@media screen and (min-width : 1300px){
+  #map-container {
+    max-width: 1300px;
+  }
+  .filter-wrapper {
+    width : 1300px;
+  }
+  #maincontent {
+    width: 1300px;
+    margin: auto;
+  }
+  #breadcrumb {
+    width: 1300px;
+    padding: 5px calc((100% - 1300px)/2) 7px;
+  }
+}

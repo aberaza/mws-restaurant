@@ -21,6 +21,14 @@
   --header-bg-color     : #333;
   --header-fg-color     : #aaa;
   --header-text-color   : #fff;
+
+  /* Some sizing, position and margin options */
+  --header-height       : 50px;
+  --breadcrumb-height   : 40px;
+  --filter-height       : 50px;
+
+  --map-main-height     : 400px;
+  --map-main-width      : 100%;
 }
 
 body,td,th,p{
@@ -59,16 +67,13 @@ article, aside, canvas, details, figcaption, figure, footer, header, hgroup, men
 }
 #maincontent {
   background-color: var(--main-bg-color);
-  /* min-height: 100%; */
   position: relative;
-  /* top:80px; */
 }
 
 .flexboxContainer {
   width: 100%;
   display: flex;
   flex-wrap: wrap;
-
   justify-content: space-around;
   align-items: baseline;
 }
@@ -92,7 +97,7 @@ article, aside, canvas, details, figcaption, figure, footer, header, hgroup, men
 
 .header-nav {
   width: 100%;
-  height: 50px;
+  height: var(--header-height);
   background-color: var(--header-bg-color);
   text-align:center;
 }
@@ -102,6 +107,7 @@ article, aside, canvas, details, figcaption, figure, footer, header, hgroup, men
   /* letter-spacing: 10px; */
   letter-spacing: 2px;
   text-transform: uppercase;
+
   font-size: 16px;
   line-height: 21px;
   padding-top: 14px;
@@ -124,7 +130,7 @@ article, aside, canvas, details, figcaption, figure, footer, header, hgroup, men
 #breadcrumb li {
     display: inline;
     min-width: 40px;
-    min-height: 40px;
+    height: var(--breadcrumb-height);
 }
 
 /* Add a slash symbol (/) before/behind each list item */
@@ -142,7 +148,7 @@ article, aside, canvas, details, figcaption, figure, footer, header, hgroup, men
 
 /* Add a color on mouse-over */
 #breadcrumb li a:hover {
-    color: #01447e;
+    color: var(--subheader-hover-color);
     text-decoration: underline;
 }
 /* ====================== Map ====================== */
@@ -150,27 +156,20 @@ article, aside, canvas, details, figcaption, figure, footer, header, hgroup, men
   width: 100%;
 }
 #map {
-  height: 400px;
-  width: 100%;
+  height: var(--map-main-height);
+  width: var(--map-main-width);
   background-color: #ccc;
 }
 /* ====================== Restaurant Filtering ====================== */
 
-/* #breadcrumb { */
-/*     padding: 5px 18px 7px; */
-/*     list-style: none; */
-/*     font-size: 14px; */
-/*     margin: 0; */
-/*     /1* width: 100%; *1/ */
-/*     width: calc(100vw - 36px); */
-/* } */
 .filter-wrapper {
   width: 100%;
-  min-height: 50px;
+  min-height: var(--filter-height);
 }
 .filter-options {
   width: 100%;
-  min-height: 50px;
+  /* min-height: 50px; */
+  height: 100%;
   background-color: var(--subheader-bg-color);
   align-items: baseline;
 }
@@ -219,7 +218,6 @@ select{
   padding: 0 30px 25px;
   text-align: left;
   max-width: 270px;
-  flex-grow: 1;
   /* max-width: 340px; */
 }
 #restaurants-list .restaurant-img {

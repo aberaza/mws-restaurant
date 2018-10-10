@@ -1,6 +1,13 @@
 /**
  * Common database helper functions.
  */
+
+const IMG_SIZES=[
+  {suffix : "-small", width:320},
+  {suffix: "-medium", width: 640},
+  {suffix: "-large", width:800}];
+const IMG_SUFFIX_RX=/(\.[\w\d]+)$/i;
+
 class DBHelper {
 
   /**
@@ -150,7 +157,15 @@ class DBHelper {
    * Restaurant image URL.
    */
   static imageUrlForRestaurant(restaurant) {
-    return (`/img/${restaurant.photograph}`);
+    return (`/img/${restaurant.photograph.replace(IMG_SUFFIX_RX, IMG_SIZES[0].suffix + '$1')}`);
+  }
+
+  /**
+   * Get full images srcset
+   */
+
+  static imageSrcsetForRestaurant(restaurant) {
+    return IMG_SIZES.map((size)=> `/img/${restaurant.photograph.replace(IMG_SUFFIX_RX, size.suffix + '$1')} ${size.width}w`);
   }
 
   /**

@@ -8,6 +8,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
   initMap();
 });
 
+
 /**
  * Initialize leaflet map
  */
@@ -90,6 +91,7 @@ fillRestaurantHTML = (restaurant = self.restaurant) => {
   const image = document.getElementById('restaurant-img');
   image.className = 'restaurant-img'
   image.src = DBHelper.imageUrlForRestaurant(restaurant);
+  image.srcset = DBHelper.imageSrcsetForRestaurant(restaurant).join(',');
 
   const cuisine = document.getElementById('restaurant-cuisine');
   cuisine.innerHTML = restaurant.cuisine_type;

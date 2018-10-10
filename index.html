@@ -14,6 +14,7 @@
 </head>
 
 <body>
+  <a href="#restaurant-filters" class="skip-link">Skip to restaurants filters</a>
   <header class="header-wrapper">
     <nav class="header-nav">
       <h1><a href="/">Restaurant Reviews</a></h1>
@@ -24,7 +25,7 @@
     <section id="map-container">
       <div id="map"></div>
     </section>
-    <section class="filter-wrapper">
+    <section id="restaruant-filters" class="filter-wrapper" tabindex="-1">
       <div class="filter-options flexboxContainer">
         <h2>Filter Results</h2>
         <select id="neighborhoods-select" name="neighborhoods" onchange="updateRestaurants()">

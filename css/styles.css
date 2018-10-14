@@ -6,8 +6,8 @@
   --main-bg-color       : #f3f3f3;
   --main-text-color     : #333;
   --main-text-faded-color:#666;
-  --main-title-color    : #f18200;
-  --main-link-color     : #f18200;
+  --main-title-color    : #f07000; /* #f18200;*/
+  --main-link-color     : #f07000; /*#f18200;*/
   --main-focus-color    : #3397db;
 
   --button-bg-color     : #333;
@@ -61,7 +61,8 @@ a img{
 }
 h1, h2, h3, h4, h5, h6 {
   font-family: Arial, Helvetica, sans-serif;
-  margin: 0 0 20px;
+  margin: 0 0 20px;:wa
+
 }
 article, aside, canvas, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
 	display: block;

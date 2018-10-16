@@ -218,3 +218,10 @@ getParameterByName = (name, url) => {
   if (!results[2]) return "";
   return decodeURIComponent(results[2].replace(/\+/g, " "));
 };
+
+if( 'serviceWorker' in navigator) {
+  navigator.serviceWorker.register('/serviceWorker.js', {scope: '/'})
+    .then(registration => console.log("Registration succeeded " + registration.scope))
+    .catch(error => console.log("Registration failed " + error));
+}
+

@@ -230,8 +230,9 @@ select{
   min-height: 380px;
   padding: 0 30px 25px;
   text-align: left;
-  max-width: 270px;
-  /* max-width: 340px; */
+  /* max-width: 270px; */
+  max-width: 340px;
+  min-width: 240px;
 }
 #restaurants-list .restaurant-img {
   background-color: #ccc;

@@ -1,6 +1,11 @@
 
-@media screen and ( min-width:350px ){
-/* Put restaurant picture and opening times side to side */
+@media screen and ( max-width:449px ){
+  #restaurants-list li {
+    margin: 0 0 5px;
+    padding: 0;
+    text-align: left;
+  }
+
 }
 
 @media screen and (min-width : 450px) {
@@ -12,7 +17,12 @@
   }
   .inside #map-container {
     width: 49%;
-    height: calc(100vh - 88px);
+    /* height: calc(100vh - 88px); */
+    height: auto;
+  }
+
+  .inside #restaurant-container {
+    order : -1;
   }
 }
 

@@ -196,7 +196,8 @@ class DBHelper {
    * Restaurant image URL.
    */
   static imageUrlForRestaurant(restaurant) {
-    return (`/img/${restaurant.photograph.replace(IMG_SUFFIX_RX, IMG_SIZES[0].suffix + '$1')}`);
+    // return (`/img/${restaurant.photograph.replace(IMG_SUFFIX_RX, IMG_SIZES[0].suffix + '$1')}`);
+    return `/img/${restaurant.photograph}${IMG_SIZES[0].suffix}.jpg`;
   }
 
   /**
@@ -204,7 +205,7 @@ class DBHelper {
    */
 
   static imageSrcsetForRestaurant(restaurant) {
-    return IMG_SIZES.map((size)=> `/img/${restaurant.photograph.replace(IMG_SUFFIX_RX, size.suffix + '$1')} ${size.width}w`);
+    return IMG_SIZES.map((size)=> `/img/${restaurant.photograph}${size.suffix}.jpg ${size.width}w`);
   }
 
   /**

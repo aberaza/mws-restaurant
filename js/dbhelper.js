@@ -90,7 +90,7 @@ function idbGetNeighborhoodList() {
     let store = tx.objectStore("restaurants");
     let index = store.index("neighborhoods");
     let cuisines = [];
-    let cursor = index.openCursor(null, "nextunique").then(function iterateCursor(cursor){
+    index.openCursor(null, "nextunique").then(function iterateCursor(cursor){
       if(!cursor) return;
 
       cuisines.push(cursor.value.neighborhood);
@@ -147,13 +147,6 @@ class DBHelper {
   /**
    * Fetch all restaurants.
    */
-  // static _fetchRestaurants(callback) {
-  //   getJSON(DBHelper.DATABASE_URL)
-  //     .then(restaurants => callback(null, restaurants))
-  //     .catch(error => callback(error, null));
-  //
-  // }
-
   static fetchRestaurants(callback) {
     idbGetRestaurants()
       .then(restaurants => {
@@ -168,11 +161,6 @@ class DBHelper {
   /**
    * Fetch a restaurant by its ID.
    */
-  // static fetchRestaurantById(id, callback) {
-  //   getJSON(RESTAURANT_BY_ID(id))
-  //     .then(restaurant => callback(null, restaurant))
-  //     .catch(error => callback(error, null));
-  // }
   static fetchRestaurantById(id, callback) {
     idbGetRestaurantByID(id)
       .then(restaurant => {
@@ -187,11 +175,6 @@ class DBHelper {
   /**
    * Fetch restaurants by a cuisine type with proper error handling.
    */
-  // static fetchRestaurantByCuisine(cuisine, callback) {
-  //   getJSON(RESTAURANT_BY_CUISINE(cuisine))
-  //     .then(restaurants => callback(null, restaurants))
-  //     .catch(error => callback(error, null));
-  // }
   static fetchRestaurantByCuisine(cuisine, callback) {
     idbGetRestaurantsByCuisine(cuisine)
       .then(restaurants => {
@@ -208,11 +191,6 @@ class DBHelper {
   /**
    * Fetch restaurants by a neighborhood with proper error handling.
    */
-  // static fetchRestaurantByNeighborhood(neighborhood, callback) {
-  //   getJSON(RESTAURANT_BY_NEIGHBORHOOD(neighborhood))
-  //     .then(restaurants => callback(null, restaurants))
-  //     .catch(error => callback(error, null));
-  // }
   static fetchRestaurantByNeighborhood(neighborhood, callback) {
     idbGetRestaurantsByNeighborhood(neighborhood)
       .then(restaurants => {
@@ -227,18 +205,6 @@ class DBHelper {
   /**
    * Fetch restaurants by a cuisine and a neighborhood with proper error handling.
    */
-  // static fetchRestaurantByCuisineAndNeighborhood(cuisine="all", neighborhood="all", callback) {
-  //   let filter = {};
-  //   if (cuisine != "all") {
-  //     filter.cuisine_type = cuisine;
-  //   }
-  //   if (neighborhood != "all") {
-  //     filter.neighborhood = neighborhood;
-  //   }
-  //   getJSON(RESTAURANT_BY_FILTER(filter))
-  //     .then(restaurants => callback(null, restaurants))
-  //     .catch(error => callback(error, null));
-  // }
   static fetchRestaurantByCuisineAndNeighborhood(cuisine="all", neighborhood="all", callback) {
     let results;
     if(cuisine != "all"){
@@ -260,23 +226,6 @@ class DBHelper {
   /**
    * Fetch all neighborhoods with proper error handling.
    */
-  // static fetchNeighborhoods(callback) {
-  //   DBHelper.fetchRestaurants((error, restaurants) => {
-  //     if (error) {
-  //       callback(error, null);
-  //     } else {
-  //       // Get all neighborhoods from all restaurants
-  //       const neighborhoods = restaurants.map(
-  //         (v, i) => restaurants[i].neighborhood
-  //       );
-  //       // Remove duplicates from neighborhoods
-  //       const uniqueNeighborhoods = neighborhoods.filter(
-  //         (v, i) => neighborhoods.indexOf(v) == i
-  //       );
-  //       callback(null, uniqueNeighborhoods);
-  //     }
-  //   });
-  // }
   static fetchNeighborhoods(callback) {
     idbGetNeighborhoodList()
       .then(neighborhoods => callback(null, neighborhoods))
@@ -285,22 +234,6 @@ class DBHelper {
   /**
    * Fetch all cuisines with proper error handling.
    */
-  // static fetchCuisines(callback) {
-  //   // Fetch all restaurants
-  //   DBHelper.fetchRestaurants((error, restaurants) => {
-  //     if (error) {
-  //       callback(error, null);
-  //     } else {
-  //       // Get all cuisines from all restaurants
-  //       const cuisines = restaurants.map((v, i) => restaurants[i].cuisine_type);
-  //       // Remove duplicates from cuisines
-  //       const uniqueCuisines = cuisines.filter(
-  //         (v, i) => cuisines.indexOf(v) == i
-  //       );
-  //       callback(null, uniqueCuisines);
-  //     }
-  //   });
-  // }
   static fetchCuisines(callback) {
     idbGetCuisineList()
       .then(cuisines => callback(null, cuisines))
@@ -317,7 +250,6 @@ class DBHelper {
    * Restaurant image URL.
    */
   static imageUrlForRestaurant(restaurant) {
-    // return (`/img/${restaurant.photograph.replace(IMG_SUFFIX_RX, IMG_SIZES[0].suffix + '$1')}`);
     return `/img/${restaurant.photograph}${IMG_SIZES[0].suffix}.jpg`;
   }
 
@@ -358,12 +290,6 @@ class DBHelper {
     return marker;
   } */
 }
-
-
-// let dbPromise = idb.open('test', 1, (upgradeDb) => {
-//   let restaurants = upgradeDb.transaction.objectStore('restaurants');
-//   restaurants.createIndex('cuisine', 'cuisine');
-// });
 
 // function cleanImages(){
 //   return dbPromise.then( db => {

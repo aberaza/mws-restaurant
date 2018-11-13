@@ -148,15 +148,22 @@ class DBHelper {
    * Fetch all restaurants.
    */
   static fetchRestaurants(callback) {
+    fetchFromNet = false;
     idbGetRestaurants()
       .then(restaurants => {
         if (restaurants.length === 0) {
-          return getJSON(DBHelper.DATABASE_URL).then(idbAddRestaurants);
+          fetchFromNet = true;
+          return getJSON(DBHelper.DATABASE_URL);
         }
         return restaurants;
       })
-      .then(restaurants => callback(null, restaurants))
+      .then(restaurants => { callback(null, restaurants); return restaurants;})
+      .then(restaurants => {
+        if(fetchFromNet) return idbAddRestaurants(restaurants);
+        return getJSON(DBHelper.DATABASE_URL).then(idbAddRestaurants);
+      })
       .catch(error => callback(error, null));
+
   }
   /**
    * Fetch a restaurant by its ID.
@@ -250,7 +257,7 @@ class DBHelper {
    * Restaurant image URL.
    */
   static imageUrlForRestaurant(restaurant) {
-    return `/img/${restaurant.photograph}${IMG_SIZES[0].suffix}.jpg`;
+    return `/img/${restaurant.photograph || "nopic"}${IMG_SIZES[0].suffix}.${restaurant.photograph?"jpg":"png"}`;
   }
 
   /**
@@ -259,7 +266,7 @@ class DBHelper {
 
   static imageSrcsetForRestaurant(restaurant) {
     return IMG_SIZES.map(
-      size => `/img/${restaurant.photograph}${size.suffix}.jpg ${size.width}w`
+      size => `/img/${restaurant.photograph || "nopic"}${size.suffix}.${restaurant.photograph?"jpg":"png"} ${size.width}w`
     );
   }
 
